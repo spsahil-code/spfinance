@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { getSubmissions } from "@/app/services/itr-filing/actions"
 
-export default function AdminDashboard() {
-  const submissions = getSubmissions()
+export default async function AdminDashboard() {
+  const submissions = await getSubmissions() || []
 
   return (
     <div className="flex flex-col min-h-screen">

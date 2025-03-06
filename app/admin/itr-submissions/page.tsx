@@ -7,8 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { getSubmissions } from "@/app/services/itr-filing/actions"
 
-export default function ITRSubmissionsPage() {
-  const submissions = getSubmissions()
+export default async function ITRSubmissionsPage() {
+  const submissions = await getSubmissions() || []
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
