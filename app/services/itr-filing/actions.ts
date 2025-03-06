@@ -4,6 +4,22 @@ import { revalidatePath } from "next/cache"
 import { supabase } from "@/lib/supabase"
 import { sendSubmissionEmail } from "@/lib/email"
 
+// Get all submissions
+export const getSubmissions = async () => {
+  try {
+    const { data: submissions, error } = await supabase
+      .from('itr_submissions')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+    return submissions
+  } catch (error) {
+    console.error('Error fetching submissions:', error)
+    return []
+  }
+}
+
 // Add new submission
 export const submitITRForm = async (formData: FormData) => {
   try {
